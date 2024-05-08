@@ -1,0 +1,33 @@
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+
+spring:
+  application:
+    name: financial-weekly
+  mustache:
+    check-template-location: false
+  threads:
+    virtual:
+      enabled: true
+  ai:
+    ollama:
+      base-url: ${AI_OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        options:
+          model: llama3:8b
+          temperature: 0.7
+          top_p: 0.95
+    # vectorstore:
+    #   qdrant:
+    #     host: ${QDRANT_HOST:localhost}
+    #     port: ${QDRANT_PORT:6333}
+    #     collection-name: ${QDRANT_COLLECTION_NAME:developer_assistance}
+
+logging:
+  level:
+    org.atmosphere: warn
+
+# Launch the default browser when starting the application in development mode
+vaadin:
+  launch-browser: true
